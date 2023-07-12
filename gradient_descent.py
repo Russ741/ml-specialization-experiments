@@ -1,5 +1,6 @@
 import numpy
 
+# returns y_hat where y_hat[i] is the predicted value of f_w,b(x[i])
 def f_no_vector(w, b, x):
     y = numpy.full((len(x)), b)
     for x_i in range(len(x)):
