@@ -1,7 +1,7 @@
 import unittest
 import numpy
 
-def f_no_vectors(w, b, x):
+def f_no_vector(w, b, x):
     y = numpy.full((len(x)), b)
     for x_i in range(len(x)):
         for cell_i in range(len(x[x_i])):
@@ -10,5 +10,6 @@ def f_no_vectors(w, b, x):
             y[x_i] += featureParameterProduct
     return y
 
-def f(w, b, x):
+def f_vector(w, b, x):
     return numpy.dot(x, w) + b
+
