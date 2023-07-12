@@ -1,4 +1,3 @@
-import unittest
 import numpy
 
 def f_no_vector(w, b, x):
