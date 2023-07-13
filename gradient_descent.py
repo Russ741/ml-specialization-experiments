@@ -2,7 +2,7 @@ import numpy
 
 # returns y_hat where y_hat[i] is the predicted value of f_w,b(x[i])
 def f_no_vector(w, b, x):
-    y = numpy.full((len(x)), b)
+    y = [b] * len(x)
     for x_i in range(len(x)):
         for cell_i in range(len(x[x_i])):
             cell = x[x_i][cell_i]
@@ -15,7 +15,7 @@ def f_vector(w, b, x):
 
 # returns a scalar representing the cost (mean of squares of errors)
 def j_no_vector(y_hat, y):
-    cost = 0
+    cost = 0.
     m = len(y)
     for i in range(m):
         cost += (y_hat[i] - y[i]) ** 2
@@ -45,7 +45,7 @@ def derivatives_no_vector(slopes):
     results = []
     training_samples = len(slopes[0])
     for parameter in range(len(slopes)):
-        result = 0
+        result = 0.
         for training_example in range(training_samples):
             result += slopes[parameter][training_example]
         result /= training_samples
