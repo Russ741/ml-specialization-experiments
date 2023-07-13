@@ -2,7 +2,7 @@
 # pytest gradient_descent.py
 
 from numpy.testing import assert_array_equal
-from gradient_descent import f_vector, f_no_vector, j_no_vector, j_vector, slope_no_vector, slope_vector
+from gradient_descent import derivatives_no_vector, derivatives_vector, f_vector, f_no_vector, j_no_vector, j_vector, slope_no_vector, slope_vector
 
 def test_f():
     w = [2, 3]
@@ -29,3 +29,10 @@ def test_slope():
     expected = [[-10, 0, 27], [-22, 0, 24]]
     assert_array_equal(slope_no_vector(x, y_hat, y), expected)
     assert_array_equal(slope_vector(x, y_hat, y), expected)
+
+def test_derivatives():
+    slopes = [[-1, 2, 5], [8, 0, 1]]
+
+    expected = [2, 3]
+    assert_array_equal(derivatives_no_vector(slopes), expected)
+    assert_array_equal(derivatives_vector(slopes), expected)

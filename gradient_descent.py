@@ -40,3 +40,17 @@ def slope_no_vector(x, y_hat, y):
 def slope_vector(x, y_hat, y):
     deltas = numpy.subtract(y_hat, y)
     return numpy.transpose(x) * deltas
+
+def derivatives_no_vector(slopes):
+    results = []
+    training_samples = len(slopes[0])
+    for parameter in range(len(slopes)):
+        result = 0
+        for training_example in range(training_samples):
+            result += slopes[parameter][training_example]
+        result /= training_samples
+        results.append(result)
+    return results
+
+def derivatives_vector(slopes):
+    return numpy.sum(slopes, 1) / numpy.shape(slopes)[1]
