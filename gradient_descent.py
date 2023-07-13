@@ -54,3 +54,12 @@ def derivatives_no_vector(slopes):
 
 def derivatives_vector(slopes):
     return numpy.sum(slopes, 1) / numpy.shape(slopes)[1]
+
+def update_parameters_no_vectors(w, alpha, derivatives):
+    results = []
+    for i in range(len(w)):
+        results.append(w[i] - alpha * derivatives[i])
+    return results
+
+def update_parameters_vectors(w, alpha, derivatives):
+    return numpy.subtract(w, numpy.multiply(alpha, derivatives))
