@@ -63,3 +63,26 @@ def update_parameters_no_vectors(w, alpha, derivatives):
 
 def update_parameters_vectors(w, alpha, derivatives):
     return numpy.subtract(w, numpy.multiply(alpha, derivatives))
+
+def derivative_b_no_vectors(y_hat, y):
+    derivative_b = 0
+    m = len(y_hat)
+    for i in range(m):
+        derivative_b += y_hat[i] - y[i]
+    return derivative_b / m
+
+def gradient_descent_no_vectors(w, b, x, y, alpha, rounds):
+    print(f"Cost before: {j_no_vector(f_no_vector(w, b, x), y)}")
+    for i in range(rounds):
+        y_hat = f_no_vector(w, b, x)
+        # j = j_no_vector(y_hat, y)
+        slopes = slope_no_vector(x, y_hat, y)
+        derivatives = derivatives_no_vector(slopes)
+        new_w = update_parameters_no_vectors(w, alpha, derivatives)
+        w = new_w
+        derivative_b = derivative_b_no_vectors(y_hat, y)
+        new_b = b - alpha * derivative_b
+        b = new_b
+    #    print(f"round {i}: w = {w}, b = {b}")
+    print(f"Cost after: {j_no_vector(f_no_vector(new_w, new_b, x), y)}")
+    return new_w, new_b
