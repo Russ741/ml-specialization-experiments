@@ -25,3 +25,18 @@ def j_no_vector(y_hat, y):
 def j_vector(y_hat, y):
     return 1 / (2 * len(y)) * numpy.sum(numpy.square(numpy.subtract(y_hat, y)))
 
+# returns an array of slopes where slope[i] is a vector of slopes for parameter i
+# slope[param_num][training_sample]
+def slope_no_vector(x, y_hat, y):
+    m = len(x[0])
+    result = []
+    for param_num in range(m):
+        resultRow = []
+        for training_sample in range(len(x)):
+            resultRow.append((y_hat[training_sample] - y[training_sample]) * x[training_sample][param_num])
+        result.append(resultRow)
+    return result
+
+def slope_vector(x, y_hat, y):
+    deltas = numpy.subtract(y_hat, y)
+    return numpy.transpose(x) * deltas
